@@ -715,21 +715,21 @@ with gr.Blocks(title="GPT-SoVITS WebUI") as app:
                 text = gr.Textbox(label=i18n("需要合成的文本"), value="", lines=26, max_lines=26)
             with gr.Column(scale=7):
                 text_language = gr.Dropdown(
-                        label=i18n("需要合成的语种")+i18n(".限制范围越小判别效果越好。"), choices=list(dict_language.keys()), value=i18n("中文"), scale=1
+                        label=i18n("需要合成的语种")+i18n(".限制范围越小判别效果越好。"), choices=list(dict_language.keys()), value=i18n("英文"), scale=1
                     )
                 how_to_cut = gr.Dropdown(
                         label=i18n("怎么切"),
                         choices=[i18n("不切"), i18n("凑四句一切"), i18n("凑50字一切"), i18n("按中文句号。切"), i18n("按英文句号.切"), i18n("按标点符号切"), ],
-                        value=i18n("凑四句一切"),
+                        value=i18n("不切"),
                         interactive=True, scale=1
                     )
                 gr.Markdown(value=html_center(i18n("语速调整，高为更快")))
                 if_freeze=gr.Checkbox(label=i18n("是否直接对上次合成结果调整语速和音色。防止随机性。"), value=False, interactive=True,show_label=True, scale=1)
                 speed = gr.Slider(minimum=0.6,maximum=1.65,step=0.05,label=i18n("语速"),value=1,interactive=True, scale=1)
                 gr.Markdown(html_center(i18n("GPT采样参数(无参考文本时不要太低。不懂就用默认)：")))
-                top_k = gr.Slider(minimum=1,maximum=100,step=1,label=i18n("top_k"),value=15,interactive=True, scale=1)
-                top_p = gr.Slider(minimum=0,maximum=1,step=0.05,label=i18n("top_p"),value=1,interactive=True, scale=1)
-                temperature = gr.Slider(minimum=0,maximum=1,step=0.05,label=i18n("temperature"),value=1,interactive=True,  scale=1) 
+                top_k = gr.Slider(minimum=1,maximum=100,step=1,label=i18n("top_k"),value=8,interactive=True, scale=1)
+                top_p = gr.Slider(minimum=0,maximum=1,step=0.05,label=i18n("top_p"),value=0.9,interactive=True, scale=1)
+                temperature = gr.Slider(minimum=0,maximum=1,step=0.05,label=i18n("temperature"),value=0.75,interactive=True,  scale=1) 
             # with gr.Column():
             #     gr.Markdown(value=i18n("手工调整音素。当音素框不为空时使用手工音素输入推理，无视目标文本框。"))
             #     phoneme=gr.Textbox(label=i18n("音素框"), value="")
